@@ -1,0 +1,14 @@
+apiVersion: v1             # Services belong to core "v1" API group
+kind: Service              # I am creating a Service
+metadata:
+  name: my-csharp-app      # This service's unique name
+  namespace: devops-bootcamp
+  labels:
+    app: my-csharp-app     # Tag for this service
+spec:                      # What do I want?
+  type: NodePort           # How to expose (see types below)
+  selector:
+    app: my-csharp-app     # Send traffic to pods with THIS label
+  ports:
+  - port: 8080             # Service listens on this port
+    targetPort: 8080       # Forward traffic to this port inside pod
